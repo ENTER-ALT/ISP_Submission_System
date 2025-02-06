@@ -1,0 +1,1 @@
+export type ErrorState = { [key: string]: string };

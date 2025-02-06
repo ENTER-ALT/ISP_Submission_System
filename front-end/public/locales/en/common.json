@@ -1,0 +1,48 @@
+{
+  "noAccess": {
+    "title": "Your Profile",
+    "mainSectionTitle": "No access",
+    "message": "You do not have access to this page",
+    "buttonText": "Home"
+  },
+  "myProfile": {
+    "title": "Your Profile",
+    "mainSectionTitle": "Your Profile",
+    "logoutButton": "Logout"
+  },
+  "myISP": {
+    "title": "My ISP",
+    "mainSectionTitle": "Choose student"
+  },
+  "composeISP": {
+    "title": "Compose ISP",
+    "mainSectionTitle": "ISP {{startYear}}-{{endYear}}",
+    "totalCredits": "{{totalCourseCredits}}/{{totalCredits}}",
+    "submitButton": "Submit"
+  },
+  "reviewISP": {
+    "title": "Review ISP",
+    "mainSectionTitle": "ISP {{startYear}}-{{endYear}}",
+    "totalCredits": "{{totalCourseCredits}}/{{totalCredits}}"
+  },
+  "studentISP": {
+    "title": "Your ISP",
+    "mainSectionTitle": "Your ISP"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "header": {
+    "title": "ISP submission system",
+    "homeButton": "Home",
+    "loginButton": "Login",
+    "language": "Language"
+  },
+  "language": "en",
+  "login_required": {
+    "title": "Your Profile",
+    "main_section_title": "Login Required",
+    "login_message": "You must be logged in to access this page.",
+    "login_button": "Login"
+  }
+}

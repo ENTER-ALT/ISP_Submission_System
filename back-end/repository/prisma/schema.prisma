@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int   @id @default(autoincrement())
+  name              String  @db.VarChar(256)
+  email             String  @unique @db.VarChar(256)
+  password          String  @db.VarChar(256)
+  userType          UserTypes
+
+  //student
+  nationality       String?  @db.VarChar(256)
+  studyYear         Int?
+  isps              Isp[]
+  passedCourses     StudentPassedCourse[]
+
+  //administrative
+  privileges        AdministrativePrivilege[]
+}
+
+enum UserTypes {
+  Student
+  Administrative
+}
+
+model Privilege {
+  id                Int   @id @default(autoincrement())
+  name              Int 
+  description       String  @db.VarChar(256)
+  administratives   AdministrativePrivilege[]
+}
+
+model AdministrativePrivilege {
+  adminId           Int 
+  admin             User @relation(fields: [adminId], references: [id])
+  privilegeId       Int
+  privilege         Privilege @relation(fields: [privilegeId], references: [id])
+  @@unique([adminId, privilegeId])
+}
+
+model Course {
+  id                Int   @id @default(autoincrement())
+  name              String  @db.VarChar(256)
+  description       String  @db.VarChar(256)
+  phase             Int
+  credits           Int
+  isElective        Boolean
+  lecturers         String[]
+  requiredBy        CourseRequiredPassedCourses[] @relation(name: "RequiredBy")
+  requiredPassedCourses CourseRequiredPassedCourses[] @relation(name: "Required")
+  isps              CourseAddedISP[]
+  passedStudents    StudentPassedCourse[]
+  @@unique([name, phase])
+}
+
+model CourseRequiredPassedCourses {
+  courseId          Int
+  course            Course @relation(name: "RequiredBy", fields: [courseId], references: [id])
+  requiredCourseId  Int
+  requiredCourse    Course @relation(name: "Required", fields: [requiredCourseId], references: [id])
+  @@unique([courseId, requiredCourseId])
+}
+
+model StudentPassedCourse {
+  courseId          Int
+  course            Course @relation(fields: [courseId], references: [id])
+  studentId         Int
+  student           User @relation(fields: [studentId], references: [id])
+  @@unique([courseId, studentId])
+}
+
+model Isp {
+  id                Int  @id @default(autoincrement())
+  totalCredits      Int  @default(60)
+  startYear         Int
+  status            IspStatus
+  studentId         Int
+  student           User @relation(fields: [studentId], references: [id]) 
+  courses           CourseAddedISP[]
+  @@unique([startYear, studentId])
+}
+
+enum IspStatus {
+  NOTSUBMITTED
+  SUBMITTED
+}
+
+model CourseAddedISP {
+  courseId          Int
+  course            Course @relation(fields: [courseId], references: [id])
+  ispId             Int
+  isp               Isp @relation(fields: [ispId], references: [id])
+  @@unique([courseId, ispId])
+}
+
+
+

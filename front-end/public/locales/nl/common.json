@@ -1,0 +1,48 @@
+{
+  "noAccess": {
+    "title": "Je profiel",
+    "mainSectionTitle": "Geen toegang",
+    "message": "Je hebt geen toegang tot deze pagina",
+    "buttonText": "Huis"
+  },
+  "myProfile": {
+    "title": "Jouw profiel",
+    "mainSectionTitle": "Jouw profiel",
+    "logoutButton": "Uitloggen"
+  },
+  "myISP": {
+    "title": "Mijn ISP",
+    "mainSectionTitle": "Kies student"
+  },
+  "composeISP": {
+    "title": "Stel ISP samen",
+    "mainSectionTitle": "ISP {{startYear}}-{{endYear}}",
+    "totalCredits": "{{totalCourseCredits}}/{{totalCredits}}",
+    "submitButton": "Verzenden"
+  },
+  "reviewISP": {
+    "title": "Herzien ISP",
+    "mainSectionTitle": "ISP {{startYear}}-{{endYear}}",
+    "totalCredits": "{{totalCourseCredits}}/{{totalCredits}}"
+  },
+  "studentISP": {
+    "title": "Jouw ISP",
+    "mainSectionTitle": "Jouw ISP"
+  },
+  "home": {
+    "title": "Huis"
+  },
+  "language": "nl",
+  "header": {
+    "title": "ISP indieningssysteem",
+    "homeButton": "Huis",
+    "loginButton": "Inloggen",
+    "language": "Taal"
+  },
+  "login_required": {
+    "title": "Uw Profiel",
+    "main_section_title": "Inloggen Vereist",
+    "login_message": "U moet ingelogd zijn om deze pagina te bekijken.",
+    "login_button": "Inloggen"
+  }
+}
